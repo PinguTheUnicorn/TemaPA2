@@ -1,0 +1,44 @@
+Proiectarea Algoritmilor - Tema 2 Gigel si grafurile
+Student: Hodoboc-Velescu Tudor
+Grupa: 325CC
+Timp de rezolvare: 6h rezolvarea efectiva + 1-2h intelegerea problemelor
+
+Detalii despre implementare
+
+Problema 1: poduri
+Complexitate temporala: O(N + M)
+Complexitate spatiala: O(N * M)
+Tip problema: BFS
+
+Problema s-a rezolvat printr-un BFS adaptat(sau cum spun romanii, "algoritmul
+lui Lee"). Mi-am adus aminte ca am facut o problema de genul la laborator in
+care se inundau incaperile unei nave. Se creaza matricea ce reprezinta harta de
+cautare. Apoi se creaza o coada. In ea adaug un pair ce retine perechea de
+coordonate de plecare ale lui Gigel si nivelul de cautare la care ma aflu(adica
+numarul de poduri pe care le-am traversat ca sa ajuns pana aici, cu tot cu cel
+curent). Apoi se cauta pana cand nu mai sunt elemente de scos din coada. La
+fiecare pas, se verifica daca sunt pe margine si pot iesi in acea directie(ex:
+sunt pe linia 0 pe o pozitie V sau D, adica pot merge in sus). In cazul asta,
+am gasit primea iesire si intorc nivelul actual(numarul de poduri traversate
+pana acum). Daca nu se poate iesi, se adauga toate pozitiile vecine care pot fi
+accesate din pozitia actuala si care nu au fost vizitate. Pentru a nu retine o
+matrice cu pozitiile vizitate, modific valoarea din matrice in ".", astfel
+facand-o inaccesibila. Daca se termina cautarea prin iesirea din loop, atunci
+nu exista cale de ajungere la mal din plecand din pozitia actuala a lui Gigel,
+asa ca se intoarce -1 asa cum este precizat in enunt.
+
+Problema 3: lego
+Complexitate temporala: O(K^2 * T + K! * (N! * (K - N)!))
+Complexitate spatiala: O(K)
+Tip de problema: Backtraking + DP
+
+Problema este destul de grea daca nu ai fost atent la laboratoare. In primul
+rand, trebuie sa generam toate combinatiile posibile pentru piesele de lego.
+Dupa asta, tre sa aplicam algoritmul pentru problema monezilor studiata la
+laborator. Se ia vectorul dp rezutatul din acea problema si face o cautare
+liniara pe acesta: se numara cate secvente consecutive se pot forma din piesele
+de lego fara a se depasi pragul T. In momentul in care s-a depasit pragul,
+secventa s-a terminat. Daca aceasta are lungimea mai mare decat maximul global,
+atunci se salveaza secventa si se actualizeaza lungimea maxima gasita. Se face
+acest lucru pentru toate combinatiile valide. In final se afiseaza rezultatele
+dorite.
